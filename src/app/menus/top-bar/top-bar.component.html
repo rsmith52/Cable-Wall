@@ -1,11 +1,17 @@
-<div class="row uw-global-bar">
-    {{ globalBarContent }}
+<div class="top-bar">
+  <div class="row uw-global-bar">
+      {{ globalBarContent }}
+  </div>
+  <div class="row">
+    <img class="col-sm-3" [src]="logoUrl" [style.maxwidth.px]="logoWidth" [style.maxheight.px]="logoHeight"/>
+    <h4 class="col-sm">
+      <strong>{{ welcomeMessage | uppercase }}</strong>
+    </h4>
+  </div>
+  <ul class="row">
+    <li class="col-sm" *ngFor="let menuItem of menuItems">
+      <strong>{{ menuItem | uppercase }}</strong>
+    </li>
+    <li class="col-sm-3"></li>
+  </ul>
 </div>
-<div class="row">
-  <img class="col-sm-3" [src]="logoUrl"/>
-</div>
-<ul class="row">
-  <li class="col-sm-3" *ngFor="let menuItem of menuItems">
-    {{ menuItem }}
-  </li>
-</ul>
