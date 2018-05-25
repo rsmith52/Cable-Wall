@@ -1,0 +1,12 @@
+<div class="cable-viewer">
+  <div class="row">
+    <img [src]="selectedEnd.end.imageUrl" [width]="imageSize" [alt]="selectedEnd.end.type"
+          *ngFor="let selectedEnd of selectedEnds"/>
+  </div>
+  <div class="row">
+    <button class="btn btn-outline-danger btn-sm" *ngFor="let selectedEnd of selectedEnds">
+        {{ selectedEnd.end.type | endGender:selectedEnd.end }}
+        <i class ="fas fa-times-circle"></i>
+    </button>
+  </div>
+</div>

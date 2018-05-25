@@ -1,0 +1,17 @@
+.cable-viewer {
+  border: solid 1px #000000;
+  border-radius: 25px;
+  padding: 10px;
+  padding-right: 40px;
+}
+.cable-viewer img {
+  border: solid 1px #000000;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: -10px;
+}
+.cable-viewer button {
+  margin-left: 20px;
+  margin-right: -10px;
+}

@@ -45,7 +45,7 @@ export class CablePickerComponent implements OnInit {
             "male": true,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": ""
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png"
           }
         ],
         "end2": [
@@ -54,7 +54,7 @@ export class CablePickerComponent implements OnInit {
             "male": true,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": ""
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png"
           }
         ]
       },
@@ -74,7 +74,7 @@ export class CablePickerComponent implements OnInit {
             "male": true,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": ""
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png"
           }
         ],
         "end2": [
@@ -83,7 +83,7 @@ export class CablePickerComponent implements OnInit {
             "male": true,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": ""
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png"
           }
         ]
       },
@@ -103,7 +103,7 @@ export class CablePickerComponent implements OnInit {
             "male": true,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": ""
+            "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/male.png"
           }
         ],
         "end2": [
@@ -112,21 +112,21 @@ export class CablePickerComponent implements OnInit {
             "male": false,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": ""
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/female.png"
           },
           {
             "type": "USB-A 3.0",
             "male": false,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": ""
+            "imageUrl": "../../assets/images/cables/data/usb/type-a/usb-a-3/female.png"
           },
           {
             "type": "USB-C",
             "male": false,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": ""
+            "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/female.png"
           }
         ]
       }
@@ -157,6 +157,26 @@ export class CablePickerComponent implements OnInit {
         }
       }
     }
+    this.end1 = [
+      {
+        "end": this.ends[0],
+        "quantity": 1
+      }
+    ];
+    this.end2 = [
+      {
+        "end": this.ends[1],
+        "quantity": 1
+      },
+      {
+        "end": this.ends[2],
+        "quantity": 2
+      },
+      {
+        "end": this.ends[3],
+        "quantity": 3
+      }
+    ];
     return;
   }
 

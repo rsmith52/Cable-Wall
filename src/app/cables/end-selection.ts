@@ -1,7 +1,7 @@
 import { IEnd } from './end'
 
 export interface IEndSelection {
-  end: IEnd
+  end: IEnd;
   quantity: number;
 
 }
