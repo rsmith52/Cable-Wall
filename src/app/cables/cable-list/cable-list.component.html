@@ -1,0 +1,39 @@
+
+<div class="table-responsive">
+  <table class="table" *ngIf="cables && cables.length">
+    <thead>
+      <tr>
+        <th>Item #</th>
+        <th>Name</th>
+        <th>End One</th>
+        <th>End Two</th>
+        <th>Length</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cable of cables">
+        <td>{{ cable.itemNumber }}</td>
+        <td>{{ cable.name }}</td>
+        <td>
+          <p *ngFor="let end of cable.end1">
+            {{ end.type | endGender:end }}
+          </p>
+        </td>
+        <td>
+          <p *ngFor="let end of cable.end2">
+            {{ end.type | endGender:end }}
+          </p>
+        </td>
+        <td>{{ cable.length }}</td>
+        <td>
+          {{ cable.price | currency:"USD":symbol:"1.2-2" }}
+        </td>
+        <td>{{ cable.quantity }}</td>
+        <td>{{ cable.location }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -4,11 +4,16 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CablePickerComponent } from './cables/cable-picker/cable-picker.component';
+import { CableListComponent } from './cables/cable-list/cable-list.component';
+
+import { EndGenderPipe } from './shared/end-gender.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CablePickerComponent
+    CablePickerComponent,
+    CableListComponent,
+    EndGenderPipe
   ],
   imports: [
     BrowserModule,

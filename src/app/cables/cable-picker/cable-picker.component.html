@@ -1,3 +1,32 @@
-<p>
-  test
-</p>
+<div class="row"></div>
+
+<div class="row justify-content-around">
+  <div class="col-sm-4 preview">
+    VIEWER COMPONENT HERE
+  </div>
+  <div class="col-sm-4 preview">
+    VIEWER COMPONENT HERE
+  </div>
+</div>
+
+<div class="row"></div>
+
+<div class="row justify-content-between">
+  <div class="col-sm" [style.background-color]="boxColor">
+    SELECTION COMPONENT HERE
+  </div>
+  <div class="col-sm-3">
+    SELECTION PREVIEW COMPONENT HERE
+  </div>
+  <div class="col-sm" [style.background-color]="boxColor">
+    SELECTION COMPONENT HERE
+  </div>
+</div>
+
+<div class="row"></div>
+
+<div class="row justify-content-around">
+  <div class="col-md-10 col-sm">
+    <cable-list [cables]="cables"></cable-list>
+  </div>
+</div>
