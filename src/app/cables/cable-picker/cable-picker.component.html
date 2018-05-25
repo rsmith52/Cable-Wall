@@ -1,32 +1,31 @@
-<div class="row"></div>
+<div class="cable-picker">
+  <div class="row"></div>
 
-<div class="row justify-content-around">
-  <div class="col-sm-4 preview">
-    <cable-viewer [selectedEnds]="end1"></cable-viewer>
+  <div class="row justify-content-around">
+    <div class="col-sm-5 preview">
+      <cable-viewer [selectedEnds]="end1"></cable-viewer>
+    </div>
+    <div class="col-sm-5 preview">
+      <cable-viewer [selectedEnds]="end2"></cable-viewer>
+    </div>
   </div>
-  <div class="col-sm-4 preview">
-    <cable-viewer [selectedEnds]="end2"></cable-viewer>
-  </div>
-</div>
 
-<div class="row"></div>
+  <div class="row"></div>
 
-<div class="row justify-content-between">
-  <div class="col-sm" [style.background-color]="boxColor">
-    SELECTION COMPONENT HERE
+  <div class="row justify-content-around">
+    <div class="col-sm-5" [style.background-color]="boxColor">
+      <cable-selection></cable-selection>
+    </div>
+    <div class="col-sm-5" [style.background-color]="boxColor">
+      <cable-selection></cable-selection>
+    </div>
   </div>
-  <div class="col-sm-3">
-    SELECTION PREVIEW COMPONENT HERE
-  </div>
-  <div class="col-sm" [style.background-color]="boxColor">
-    SELECTION COMPONENT HERE
-  </div>
-</div>
 
-<div class="row"></div>
+  <div class="row"></div>
 
-<div class="row justify-content-around">
-  <div class="col-md-10 col-sm">
-    <cable-list [cables]="cables"></cable-list>
+  <div class="row justify-content-around">
+    <div class="col-md-10 col-sm">
+      <cable-list [cables]="cables"></cable-list>
+    </div>
   </div>
 </div>

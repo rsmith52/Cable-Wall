@@ -1,7 +1,13 @@
-<div class="cable-viewer">
+<div class="cable-viewer shadow p-3 mb-5 bg-white rounded">
   <div class="row">
-    <img [src]="selectedEnd.end.imageUrl" [width]="imageSize" [alt]="selectedEnd.end.type"
-          *ngFor="let selectedEnd of selectedEnds"/>
+    <div class="image-box" *ngFor="let selectedEnd of selectedEnds">
+      <img class="border border-danger" [src]="selectedEnd.end.imageUrl" [width]="imageSize"
+            [alt]="selectedEnd.end.type"/>
+      <div class="triangle-bottomright"></div>
+      <div class="bottom-right">
+        x{{ selectedEnd.quantity }}
+      </div>
+    </div>
   </div>
   <div class="row">
     <button class="btn btn-outline-danger btn-sm" *ngFor="let selectedEnd of selectedEnds">
