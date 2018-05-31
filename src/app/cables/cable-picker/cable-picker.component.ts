@@ -4,7 +4,6 @@ import { IEnd } from '../end';
 import { IEndSelection } from '../end-selection'
 
 @Component ({
-  selector: 'cable-picker',
   templateUrl: './cable-picker.component.html',
   styleUrls: ['./cable-picker.component.css']
 })
