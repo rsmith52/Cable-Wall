@@ -16,7 +16,7 @@
       <tbody>
         <tr *ngFor="let cable of cables">
           <td>{{ cable.itemNumber }}</td>
-          <td>{{ cable.name }}</td>
+          <td><a [routerLink]="['/cables', cable.itemNumber]">{{ cable.name }}</a></td>
           <td>
             <p *ngFor="let end of cable.end1">
               {{ end.type | endGender:end }}
