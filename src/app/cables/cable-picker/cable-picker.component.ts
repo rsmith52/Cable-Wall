@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ICable } from '../cable';
 import { IEnd } from '../end';
-import { IEndSelection } from '../end-selection'
+import { IEndSelection } from '../end-selection';
+import { ICategory } from '../category';
 
 @Component ({
   templateUrl: './cable-picker.component.html',
@@ -18,6 +19,11 @@ export class CablePickerComponent implements OnInit {
   // used in initialization
   included: boolean;
 
+  //List of all categories
+  categories: ICategory[];
+  // used in initialization
+  newCategory: ICategory;
+
   // currently selected end types
   end1: IEndSelection[];
   end2: IEndSelection[];
@@ -26,7 +32,16 @@ export class CablePickerComponent implements OnInit {
 
   // initialize lists and selections
   ngOnInit (): void {
-    // get list of cables
+
+    this.setTestCables();
+    this.getEnds();
+    this.getCategories();
+    this.setTestEnds();
+
+    return;
+  }
+
+  setTestCables(): void {
     this.cables = [
       {
         "itemNumber": 0,
@@ -44,7 +59,9 @@ export class CablePickerComponent implements OnInit {
             "male": true,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png"
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
+            "category": "Video",
+            "subCategory": "HDMI"
           }
         ],
         "end2": [
@@ -53,7 +70,9 @@ export class CablePickerComponent implements OnInit {
             "male": true,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png"
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
+            "category": "Video",
+            "subCategory": "HDMI"
           }
         ]
       },
@@ -73,7 +92,9 @@ export class CablePickerComponent implements OnInit {
             "male": true,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png"
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
+            "category": "Video",
+            "subCategory": "HDMI"
           }
         ],
         "end2": [
@@ -82,7 +103,9 @@ export class CablePickerComponent implements OnInit {
             "male": true,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png"
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
+            "category": "Video",
+            "subCategory": "HDMI"
           }
         ]
       },
@@ -102,7 +125,9 @@ export class CablePickerComponent implements OnInit {
             "male": true,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/male.png"
+            "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/male.png",
+            "category": "Data",
+            "subCategory": "USB"
           }
         ],
         "end2": [
@@ -111,25 +136,58 @@ export class CablePickerComponent implements OnInit {
             "male": false,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/female.png"
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/female.png",
+            "category": "Video",
+            "subCategory": "HDMI"
           },
           {
             "type": "USB-A 3.0",
             "male": false,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": "../../assets/images/cables/data/usb/type-a/usb-a-3/female.png"
+            "imageUrl": "../../assets/images/cables/data/usb/type-a/usb-a-3/female.png",
+            "category": "Data",
+            "subCategory": "USB"
           },
           {
             "type": "USB-C",
             "male": false,
             "rightAngle": false,
             "powered": false,
-            "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/female.png"
+            "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/female.png",
+            "category": "Data",
+            "subCategory": "USB"
           }
         ]
       }
     ];
+  }
+
+  setTestEnds(): void {
+    this.end1 = [
+      {
+        "end": this.ends[0],
+        "quantity": 1
+      }
+    ];
+    this.end2 = [
+      {
+        "end": this.ends[1],
+        "quantity": 1
+      },
+      {
+        "end": this.ends[2],
+        "quantity": 2
+      },
+      {
+        "end": this.ends[3],
+        "quantity": 3
+      }
+    ];
+  }
+
+  // get all end types from provided cables
+  getEnds(): void {
     this.ends = [];
     // create list of end types
     for (let cable of this.cables) {
@@ -156,27 +214,39 @@ export class CablePickerComponent implements OnInit {
         }
       }
     }
-    this.end1 = [
-      {
-        "end": this.ends[0],
-        "quantity": 1
+  }
+
+  // get all categories and subcategories
+  getCategories(): void {
+    this.categories = [];
+    for (let end of this.ends) {
+      console.log(end.type);
+      this.included = false;
+      for (let category of this.categories) {
+        if (end.category.localeCompare(category.type) == 0) {
+          this.included = true;
+        }
       }
-    ];
-    this.end2 = [
-      {
-        "end": this.ends[1],
-        "quantity": 1
-      },
-      {
-        "end": this.ends[2],
-        "quantity": 2
-      },
-      {
-        "end": this.ends[3],
-        "quantity": 3
+      // Category doesn't exist yet
+      if (!this.included) {
+        this.newCategory = {"type": end.category, "subCategories": []};
+        this.newCategory.subCategories.push(end.subCategory);
+        this.categories.push(this.newCategory);
       }
-    ];
-    return;
+      // Category already exists
+      else {
+        this.included = false;
+        for (let subCategory of this.categories[this.getCategoryIndex(end.category, 0)].subCategories) {
+          if (end.subCategory.localeCompare(subCategory) == 0) {
+            this.included = true;
+          }
+        }
+        // SubCategory doesn't exist yet
+        if (!this.included) {
+          this.categories[this.getCategoryIndex(end.category, 0)].subCategories.push(end.subCategory);
+        }
+      }
+    }
   }
 
   // compare 2 end types to determine if they are equivalent
@@ -188,5 +258,15 @@ export class CablePickerComponent implements OnInit {
     else {
       return false;
     }
+  }
+
+  getCategoryIndex(name: string, index: number): number {
+    for (let category of this.categories) {
+      if (name.localeCompare(category.type) == 0) {
+        return index;
+      }
+      index++;
+    }
+    return -1;
   }
 }

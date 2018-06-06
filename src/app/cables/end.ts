@@ -4,6 +4,8 @@ export interface IEnd {
   rightAngle: boolean;
   powered: boolean;
   imageUrl: string;
+  category: string;
+  subCategory: string;
 }
 
 // Not needed as of now
