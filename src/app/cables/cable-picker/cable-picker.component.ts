@@ -302,12 +302,45 @@ export class CablePickerComponent implements OnInit {
         "end2": [
           {
             "type": "VGA (9 Pin)",
-            "male": true,
+            "male": false,
             "rightAngle": false,
             "powered": false,
             "imageUrl": "../../assets/images/cables/video/vga/vga-9pin/female.png",
             "category": "Video",
             "subCategory": "VGA"
+          }
+        ]
+      },
+      {
+        "itemNumber": 7,
+        "UPC": 7,
+        "price": 4.99,
+        "quantity": 4,
+        "name": "Cable 7",
+        "brand": "Brand B",
+        "length": "6 in",
+        "color": "black",
+        "location": "B-08",
+        "end1": [
+          {
+            "type": "Firewire 400",
+            "male": true,
+            "rightAngle": false,
+            "powered": false,
+            "imageUrl": "../../assets/images/cables/data/firewire/400/male.png",
+            "category": "Data",
+            "subCategory": "Firewire"
+          }
+        ],
+        "end2": [
+          {
+            "type": "Firewire (4 Pin)",
+            "male": true,
+            "rightAngle": false,
+            "powered": false,
+            "imageUrl": "../../assets/images/cables/data/firewire/4pin/male.png",
+            "category": "Data",
+            "subCategory": "Firewire"
           }
         ]
       }
