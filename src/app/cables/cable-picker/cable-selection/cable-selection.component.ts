@@ -19,10 +19,19 @@ export class CableSelectionComponent implements OnInit {
     for (let category of this.categories) {
       this.tabs.push(category.type);
     }
-    this.tabs.sort();
   }
 
   clicked(tab: number): void {
     this.currentTab = tab;
+  }
+
+  getSubCategoryIndex(category: number, name: string, index: number): number {
+    for (let subCategory of this.categories[category].subCategories) {
+      if (name.localeCompare(subCategory) == 0) {
+        return index;
+      }
+      index++;
+    }
+    return -1;
   }
 }

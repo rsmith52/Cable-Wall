@@ -16,8 +16,10 @@ export class CablePickerComponent implements OnInit {
 
   // list of all end types
   ends: IEnd[];
+  endsSimple: IEnd[];
   // used in initialization
   included: boolean;
+  includedSimple: boolean;
 
   //List of all categories
   categories: ICategory[];
@@ -28,6 +30,9 @@ export class CablePickerComponent implements OnInit {
   end1: IEndSelection[];
   end2: IEndSelection[];
 
+  // temp test variable to print categories/ends
+  scIndex: number;
+
   // Methods //
 
   // initialize lists and selections
@@ -35,8 +40,20 @@ export class CablePickerComponent implements OnInit {
 
     this.setTestCables();
     this.getEnds();
-    this.getCategories();
+    this.getCategories(0);
     this.setTestEnds();
+
+    for (let category of this.categories) {
+      console.log(category.type);
+      this.scIndex = 0;
+      for (let subCategory of category.subCategories) {
+        console.log("___" + subCategory);
+        for (let endType of category.endTypes[this.scIndex]) {
+          console.log("______" + endType.type);
+        }
+        this.scIndex++;
+      }
+    }
 
     return;
   }
@@ -159,6 +176,138 @@ export class CablePickerComponent implements OnInit {
             "subCategory": "USB"
           }
         ]
+      },
+      {
+        "itemNumber": 3,
+        "UPC": 3,
+        "price": 9.95,
+        "quantity": 2,
+        "name": "Cable 3",
+        "brand": "Brand A",
+        "length": "3 ft",
+        "color": "white",
+        "location": "A-02",
+        "end1": [
+          {
+            "type": "Mini Displayport",
+            "male": true,
+            "rightAngle": false,
+            "powered": false,
+            "imageUrl": "../../assets/images/cables/video/displayport/mini-displayport/male.png",
+            "category": "Video",
+            "subCategory": "Displayport"
+          }
+        ],
+        "end2": [
+          {
+            "type": "HDMI",
+            "male": false,
+            "rightAngle": false,
+            "powered": false,
+            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/female.png",
+            "category": "Video",
+            "subCategory": "HDMI"
+          }
+        ]
+      },
+      {
+        "itemNumber": 4,
+        "UPC": 4,
+        "price": 14.95,
+        "quantity": 24,
+        "name": "Cable 4",
+        "brand": "Brand D",
+        "length": "9 ft",
+        "color": "white",
+        "location": "A-03",
+        "end1": [
+          {
+            "type": "3.5mm Audio",
+            "male": true,
+            "rightAngle": true,
+            "powered": false,
+            "imageUrl": "../../assets/images/cables/audio/3-5-mm/3-5-mm-trs/male.png",
+            "category": "Audio",
+            "subCategory": "3.5mm"
+          }
+        ],
+        "end2": [
+          {
+            "type": "3.5mm Audio",
+            "male": true,
+            "rightAngle": false,
+            "powered": false,
+            "imageUrl": "../../assets/images/cables/audio/3-5-mm/3-5-mm-trs/male.png",
+            "category": "Audio",
+            "subCategory": "3.5mm"
+          }
+        ]
+      },
+      {
+        "itemNumber": 5,
+        "UPC": 5,
+        "price": 11.49,
+        "quantity": 32,
+        "name": "Cable 5",
+        "brand": "Brand D",
+        "length": "1 in",
+        "color": "white",
+        "location": "C-01",
+        "end1": [
+          {
+            "type": "Lightning",
+            "male": true,
+            "rightAngle": false,
+            "powered": false,
+            "imageUrl": "../../assets/images/cables/data/lightning/lightning/male.png",
+            "category": "Data",
+            "subCategory": "Lightning"
+          }
+        ],
+        "end2": [
+          {
+            "type": "3.5mm Audio",
+            "male": true,
+            "rightAngle": false,
+            "powered": false,
+            "imageUrl": "../../assets/images/cables/audio/3-5-mm/3-5-mm-trs/male.png",
+            "category": "Audio",
+            "subCategory": "3.5mm"
+          }
+        ]
+      },
+      {
+        "itemNumber": 6,
+        "UPC": 6,
+        "price": 19.95,
+        "quantity": 24,
+        "name": "Cable 6",
+        "brand": "Brand A",
+        "length": "6 in",
+        "color": "silver",
+        "location": "B-04",
+        "end1": [
+          {
+            "type": "USB-C",
+            "male": true,
+            "rightAngle": false,
+            "powered": false,
+            "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/male.png",
+            "category": "Data",
+            "subCategory": "USB"
+          }
+        ],
+        "end2": [
+          {
+            "type": "VGA (9 Pin)",
+            "male": true,
+            "rightAngle": false,
+            "powered": false,
+            "imageUrl": "../../assets/images/cables/video/vga/vga-9pin/female.png",
+            "category": "Video",
+            "subCategory": "VGA"
+          }
+        ]
       }
     ];
   }
@@ -189,39 +338,57 @@ export class CablePickerComponent implements OnInit {
   // get all end types from provided cables
   getEnds(): void {
     this.ends = [];
+    this.endsSimple = [];
     // create list of end types
     for (let cable of this.cables) {
       for (let end1 of cable.end1) {
         this.included = false;
+        this.includedSimple = false;
         for (let end2 of this.ends) {
           if (this.endCompare(end1, end2)) {
             this.included = true;
           }
+          if (this.endCompareSimple(end1, end2)) {
+            this.includedSimple = true;
+          }
         }
         if (!this.included) {
           this.ends.push(end1);
+        }
+        if (!this.includedSimple) {
+          this.endsSimple.push(end1);
         }
       }
       for (let end1 of cable.end2) {
         this.included = false;
+        this.includedSimple = false;
         for (let end2 of this.ends) {
           if (this.endCompare(end1, end2)) {
             this.included = true;
           }
+          if (this.endCompareSimple(end1, end2)) {
+            this.includedSimple = true;
+          }
         }
         if (!this.included) {
           this.ends.push(end1);
+        }
+        if (!this.includedSimple) {
+          this.endsSimple.push(end1);
         }
       }
     }
   }
 
   // get all categories and subcategories
-  getCategories(): void {
+  getCategories(cIndex: number): void {
+    // Create empty array for categories
     this.categories = [];
-    for (let end of this.ends) {
-      console.log(end.type);
+    // Go through each end type found in cables in database
+    for (let end of this.endsSimple) {
+      //console.log(end.type);
       this.included = false;
+      // Check if each cable's category exists yet
       for (let category of this.categories) {
         if (end.category.localeCompare(category.type) == 0) {
           this.included = true;
@@ -229,23 +396,28 @@ export class CablePickerComponent implements OnInit {
       }
       // Category doesn't exist yet
       if (!this.included) {
-        this.newCategory = {"type": end.category, "subCategories": []};
-        this.newCategory.subCategories.push(end.subCategory);
+        this.newCategory = {"type": end.category, "subCategories": [], "endTypes": []};
+        //this.newCategory.subCategories.push(end.subCategory);
         this.categories.push(this.newCategory);
       }
       // Category already exists
-      else {
+      //else {
         this.included = false;
+        cIndex = 0;
         for (let subCategory of this.categories[this.getCategoryIndex(end.category, 0)].subCategories) {
           if (end.subCategory.localeCompare(subCategory) == 0) {
             this.included = true;
+            this.categories[this.getCategoryIndex(end.category, 0)].endTypes[cIndex].push(end);
           }
+          cIndex++;
         }
         // SubCategory doesn't exist yet
         if (!this.included) {
           this.categories[this.getCategoryIndex(end.category, 0)].subCategories.push(end.subCategory);
+          this.categories[this.getCategoryIndex(end.category, 0)].endTypes[cIndex] = [];
+          this.categories[this.getCategoryIndex(end.category, 0)].endTypes[cIndex].push(end);
         }
-      }
+    //  }
     }
   }
 
@@ -258,6 +430,13 @@ export class CablePickerComponent implements OnInit {
     else {
       return false;
     }
+  }
+
+  endCompareSimple (end1: IEnd, end2: IEnd): boolean {
+    if (end1.type.localeCompare(end2.type) == 0) {
+      return true;
+    }
+    else return false;
   }
 
   getCategoryIndex(name: string, index: number): number {

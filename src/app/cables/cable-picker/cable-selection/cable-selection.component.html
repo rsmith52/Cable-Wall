@@ -5,6 +5,15 @@
     </li>
   </ul>
   <div class="row list-box">
-
+    <ul>
+      <li *ngFor="let subCategory of categories[currentTab].subCategories; let i = index">
+        {{ subCategory }}
+        <ul>
+          <li *ngFor="let end of categories[currentTab].endTypes[getSubCategoryIndex(currentTab, subCategory, 0)]">
+            {{ end.type }}
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </div>
