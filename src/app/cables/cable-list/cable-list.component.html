@@ -1,6 +1,6 @@
 <div class="cable-list shadow p-3 mb-5 bg-white rounded">
   <div class="table-responsive">
-    <table class="table" *ngIf="cables && cables.length">
+    <table class="table" *ngIf="shownCables && shownCables.length">
       <thead>
         <tr>
           <th>Item #</th>
@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cable of cables">
+        <tr *ngFor="let cable of shownCables">
           <td>{{ cable.itemNumber }}</td>
           <td><a [routerLink]="['/cables', cable.itemNumber]">{{ cable.name }}</a></td>
           <td>

@@ -16,8 +16,8 @@ export class CableViewerComponent {
 
   imageSize: number = 150;
 
-  getColorString(selectedEnd: IEnd): string {
-    if (selectedEnd.male) {
+  getColorString(selectedEnd: IEndSelection): string {
+    if (selectedEnd.end.male) {
       return "primary";
     }
     else return "danger";
