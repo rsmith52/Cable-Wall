@@ -1,19 +1,36 @@
 <div class="cable-selection shadow p-3 mb-5 bg-white rounded">
   <ul class="nav nav-tabs nav-fill">
     <li class="nav-item" *ngFor="let tab of tabs; let i = index">
-      <a class="nav-link" [class.active]="currentTab==i" (click)="clicked(i)">{{ tabs[i] }}</a>
+      <a class="nav-link" [class.active]="currentTab==i" (click)="clicked(i)">
+        <h6> {{ tabs[i] }} </h6>
+      </a>
     </li>
   </ul>
   <div class="row list-box">
-    <ul>
-      <li *ngFor="let subCategory of categories[currentTab].subCategories; let i = index">
-        {{ subCategory }}
-        <ul>
-          <li *ngFor="let end of categories[currentTab].endTypes[getSubCategoryIndex(currentTab, subCategory, 0)]">
-            {{ end.type }}
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <div class="col-12">
+      <ul class="row nav nav-fill" *ngFor="let subCategory of categories[currentTab].subCategories; let i = index">
+        <li class="nav-item">
+          <a class="nav-link" (click)="openSub(i)">
+            <i class ="fas fa-caret-right" *ngIf="display[i].localeCompare('none')==0"></i>
+            <i class ="fas fa-caret-down" *ngIf="display[i].localeCompare('')==0"></i>
+            <strong> {{ subCategory }} </strong>
+          </a>
+
+          <div class="input-group" [style.display]="display[i]" *ngFor="let end of categories[currentTab].endTypes[getSubCategoryIndex(currentTab, subCategory, 0)]">
+            <p class="form-control">{{ end.type }}</p>
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="button" (click)="addEnd(end, true)">
+                <i class ="fas fa-plus-circle"></i>
+                Male
+              </button>
+              <button class="btn btn-outline-danger" type="button" (click)="addEnd(end, false)">
+                <i class ="fas fa-plus-circle"></i>
+                Female
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

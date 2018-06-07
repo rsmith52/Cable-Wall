@@ -14,10 +14,12 @@
 
   <div class="row justify-content-around">
     <div class="col-sm-4">
-      <cable-selection [categories]="categories"></cable-selection>
+      <cable-selection [categories]="categories" [numSubCatagories]="numSubCatagories"
+      (cableAdded)="onAddCable1($event)"></cable-selection>
     </div>
     <div class="col-sm-4">
-      <cable-selection [categories]="categories"></cable-selection>
+      <cable-selection [categories]="categories" [numSubCatagories]="numSubCatagories"
+      (cableAdded)="onAddCable2($event)"></cable-selection>
     </div>
   </div>
 

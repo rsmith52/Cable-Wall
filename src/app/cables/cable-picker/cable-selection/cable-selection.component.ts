@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { ICable } from '../../cable';
 import { IEnd } from '../../end';
 import { ICategory } from '../../category';
@@ -10,6 +10,12 @@ import { ICategory } from '../../category';
 })
 export class CableSelectionComponent implements OnInit {
   @Input() categories: ICategory[];
+  @Input() numSubCatagories: number;
+
+  @Output() cableAdded = new EventEmitter<IEnd>();
+
+  display: string[];
+  count: number;
 
   tabs: string[];
   currentTab: number = 0;
@@ -19,10 +25,34 @@ export class CableSelectionComponent implements OnInit {
     for (let category of this.categories) {
       this.tabs.push(category.type);
     }
+    this.count = 0;
+    this.display = [];
+    while (this.count < this.numSubCatagories) {
+      this.display[this.count] = "none";
+      this.count++;
+    }
   }
 
   clicked(tab: number): void {
     this.currentTab = tab;
+    this.count = 0;
+    while (this.count < this.numSubCatagories) {
+      this.display[this.count] = "none";
+      this.count++;
+    }
+  }
+
+  openSub(numSub: number): void {
+    if (this.display[numSub].localeCompare("") == 0) {
+      this.display[numSub] = "none";
+    }
+    else {
+      this.display[numSub] = "";
+    }
+  }
+
+  addEnd(cableAdded: IEnd, isMale: boolean): void {
+    this.cableAdded.emit(cableAdded);
   }
 
   getSubCategoryIndex(category: number, name: string, index: number): number {

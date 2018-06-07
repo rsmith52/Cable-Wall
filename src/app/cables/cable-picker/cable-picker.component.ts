@@ -25,6 +25,7 @@ export class CablePickerComponent implements OnInit {
   categories: ICategory[];
   // used in initialization
   newCategory: ICategory;
+  numSubCatagories: number;
 
   // currently selected end types
   end1: IEndSelection[];
@@ -224,7 +225,7 @@ export class CablePickerComponent implements OnInit {
         "location": "A-03",
         "end1": [
           {
-            "type": "3.5mm Audio",
+            "type": "3.5 mm Audio",
             "male": true,
             "rightAngle": true,
             "powered": false,
@@ -235,7 +236,7 @@ export class CablePickerComponent implements OnInit {
         ],
         "end2": [
           {
-            "type": "3.5mm Audio",
+            "type": "3.5 mm Audio",
             "male": true,
             "rightAngle": false,
             "powered": false,
@@ -268,7 +269,7 @@ export class CablePickerComponent implements OnInit {
         ],
         "end2": [
           {
-            "type": "3.5mm Audio",
+            "type": "3.5 mm Audio",
             "male": true,
             "rightAngle": false,
             "powered": false,
@@ -380,7 +381,7 @@ export class CablePickerComponent implements OnInit {
         this.included = false;
         this.includedSimple = false;
         for (let end2 of this.ends) {
-          if (this.endCompare(end1, end2)) {
+          if (this.endCompareGender(end1, end2)) {
             this.included = true;
           }
           if (this.endCompareSimple(end1, end2)) {
@@ -398,7 +399,7 @@ export class CablePickerComponent implements OnInit {
         this.included = false;
         this.includedSimple = false;
         for (let end2 of this.ends) {
-          if (this.endCompare(end1, end2)) {
+          if (this.endCompareGender(end1, end2)) {
             this.included = true;
           }
           if (this.endCompareSimple(end1, end2)) {
@@ -419,6 +420,8 @@ export class CablePickerComponent implements OnInit {
   getCategories(cIndex: number): void {
     // Create empty array for categories
     this.categories = [];
+    // Initialize number of sub catagories to 0
+    this.numSubCatagories = 0;
     // Go through each end type found in cables in database
     for (let end of this.endsSimple) {
       //console.log(end.type);
@@ -447,10 +450,19 @@ export class CablePickerComponent implements OnInit {
       // SubCategory doesn't exist yet
       if (!this.included) {
         this.categories[this.getCategoryIndex(end.category, 0)].subCategories.push(end.subCategory);
+        this.numSubCatagories++;
         this.categories[this.getCategoryIndex(end.category, 0)].endTypes[cIndex] = [];
         this.categories[this.getCategoryIndex(end.category, 0)].endTypes[cIndex].push(end);
       }
     }
+  }
+
+  // Called when a cable is added from a cable-selection component
+  onAddCable1(cableAdded: IEnd): void {
+    console.log(cableAdded.type + " LEFT")
+  }
+  onAddCable2(cableAdded: IEnd): void {
+    console.log(cableAdded.type + " RIGHT")
   }
 
   // compare 2 end types to determine if they are equivalent
@@ -463,7 +475,14 @@ export class CablePickerComponent implements OnInit {
       return false;
     }
   }
-
+  endCompareGender (end1: IEnd, end2: IEnd): boolean {
+    if (end1.type.localeCompare(end2.type) == 0 && end1.male == end2.male) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
   endCompareSimple (end1: IEnd, end2: IEnd): boolean {
     if (end1.type.localeCompare(end2.type) == 0) {
       return true;
