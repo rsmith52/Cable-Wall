@@ -16,6 +16,10 @@
   margin-left: 20px;
   margin-right: -10px;
 }
+.cable-viewer h1 {
+  margin: auto;
+  color: #DFDFDF;
+}
  .triangle-bottomright {
    width: 0;
    height: 0;

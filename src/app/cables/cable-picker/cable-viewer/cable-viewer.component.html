@@ -1,5 +1,6 @@
 <div class="cable-viewer shadow p-3 mb-5 bg-white rounded">
   <div class="row">
+    <h1 class="display-4" *ngIf="selectedEnds.length == 0">Add a Cable Type Below</h1>
     <div class="image-box" *ngFor="let selectedEnd of selectedEnds">
       <img class="border border-danger" [src]="selectedEnd.end.imageUrl" [width]="imageSize"
             [alt]="selectedEnd.end.type"/>
@@ -10,7 +11,8 @@
     </div>
   </div>
   <div class="row">
-    <button class="btn btn-outline-danger btn-sm" *ngFor="let selectedEnd of selectedEnds">
+    <button class="btn btn-outline-danger btn-sm"
+            *ngFor="let selectedEnd of selectedEnds; let i = index" (click)="removeEnd(i)">
         {{ selectedEnd.end.type | endGender:selectedEnd.end }}
         <i class ="fas fa-times-circle"></i>
     </button>

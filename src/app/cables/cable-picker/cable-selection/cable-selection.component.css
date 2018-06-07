@@ -10,6 +10,15 @@
   overflow-y: scroll;
 }
 
+.nav-link {
+  cursor: pointer;
+}
+
 .list-box .nav-item {
   text-align: left;
+  cursor: pointer;
+}
+
+.list-box .input-group {
+  cursor: default;
 }

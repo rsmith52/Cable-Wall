@@ -1,6 +1,7 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { ICable } from '../../cable';
 import { IEnd } from '../../end';
+import { IBasicEnd } from '../../basic-end';
 import { ICategory } from '../../category';
 
 @Component({
@@ -12,7 +13,7 @@ export class CableSelectionComponent implements OnInit {
   @Input() categories: ICategory[];
   @Input() numSubCatagories: number;
 
-  @Output() cableAdded = new EventEmitter<IEnd>();
+  @Output() cableAdded = new EventEmitter<IBasicEnd>();
 
   display: string[];
   count: number;
@@ -52,7 +53,12 @@ export class CableSelectionComponent implements OnInit {
   }
 
   addEnd(cableAdded: IEnd, isMale: boolean): void {
-    this.cableAdded.emit(cableAdded);
+    this.cableAdded.emit({
+      "type": cableAdded.type,
+      "male": isMale,
+      "category": cableAdded.category,
+      "subCategory": cableAdded.subCategory
+    });
   }
 
   getSubCategoryIndex(category: number, name: string, index: number): number {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ICable } from '../../cable';
 import { IEnd } from '../../end';
 import { IEndSelection } from '../../end-selection';
@@ -12,5 +12,11 @@ export class CableViewerComponent {
   @Input() cables: ICable[];
   @Input() selectedEnds: IEndSelection[];
 
+  @Output() cableRemoved = new EventEmitter<number>();
+
   imageSize: number = 150;
+
+  removeEnd(scIndex: number): void {
+    this.cableRemoved.emit(scIndex);
+  }
 }

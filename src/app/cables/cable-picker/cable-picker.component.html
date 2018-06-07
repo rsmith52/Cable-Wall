@@ -1,15 +1,12 @@
 <div class="cable-picker">
-  <button type="button" class="btn btn-primary" (click)="testFunction()">
-    TEST BUTTON
-  </button>
   <div class="row"></div>
 
   <div class="row justify-content-around">
     <div class="col-sm-5 preview">
-      <cable-viewer [selectedEnds]="end1"></cable-viewer>
+      <cable-viewer [selectedEnds]="end1" (cableRemoved)="onRemoveCable1($event)"></cable-viewer>
     </div>
     <div class="col-sm-5 preview">
-      <cable-viewer [selectedEnds]="end2"></cable-viewer>
+      <cable-viewer [selectedEnds]="end2" (cableRemoved)="onRemoveCable2($event)"></cable-viewer>
     </div>
   </div>
 

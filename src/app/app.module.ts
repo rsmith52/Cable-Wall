@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './404/page-not-found.component';
 
 import { EndGenderPipe } from './shared/end-gender.pipe';
+import { EndListDisplayPipe } from './shared/end-list-display.pipe'
 
 import { CableGuardService } from './cables/cable-guard.service';
 
@@ -26,7 +27,8 @@ import { CableGuardService } from './cables/cable-guard.service';
     CableDetailComponent,
     HomeComponent,
     PageNotFoundComponent,
-    EndGenderPipe
+    EndGenderPipe,
+    EndListDisplayPipe
   ],
   imports: [
     BrowserModule,

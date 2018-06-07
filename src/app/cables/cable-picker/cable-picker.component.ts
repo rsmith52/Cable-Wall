@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICable } from '../cable';
 import { IEnd } from '../end';
+import { IBasicEnd } from '../basic-end';
 import { IEndSelection } from '../end-selection';
 import { ICategory } from '../category';
 
@@ -28,8 +29,10 @@ export class CablePickerComponent implements OnInit {
   numSubCatagories: number;
 
   // currently selected end types
-  end1: IEndSelection[];
-  end2: IEndSelection[];
+  end1: IEndSelection[] = [];
+  end2: IEndSelection[] = [];
+  // used when adding new end
+  newEnd: IEnd;
 
   // temp test variable to print categories/ends
   scIndex: number;
@@ -42,7 +45,7 @@ export class CablePickerComponent implements OnInit {
     this.setTestCables();
     this.getEnds();
     this.getCategories(0);
-    this.setTestEnds();
+    //this.setTestEnds();
 
 /*
     for (let category of this.categories) {
@@ -161,7 +164,7 @@ export class CablePickerComponent implements OnInit {
             "subCategory": "HDMI"
           },
           {
-            "type": "USB-A 3.0",
+            "type": "USB-A-3.0",
             "male": false,
             "rightAngle": false,
             "powered": false,
@@ -192,7 +195,7 @@ export class CablePickerComponent implements OnInit {
         "location": "A-02",
         "end1": [
           {
-            "type": "Mini Displayport",
+            "type": "Mini-Displayport",
             "male": true,
             "rightAngle": false,
             "powered": false,
@@ -225,7 +228,7 @@ export class CablePickerComponent implements OnInit {
         "location": "A-03",
         "end1": [
           {
-            "type": "3.5 mm Audio",
+            "type": "3.5-mm-Audio",
             "male": true,
             "rightAngle": true,
             "powered": false,
@@ -236,7 +239,7 @@ export class CablePickerComponent implements OnInit {
         ],
         "end2": [
           {
-            "type": "3.5 mm Audio",
+            "type": "3.5-mm-Audio",
             "male": true,
             "rightAngle": false,
             "powered": false,
@@ -269,7 +272,7 @@ export class CablePickerComponent implements OnInit {
         ],
         "end2": [
           {
-            "type": "3.5 mm Audio",
+            "type": "3.5-mm-Audio",
             "male": true,
             "rightAngle": false,
             "powered": false,
@@ -302,7 +305,7 @@ export class CablePickerComponent implements OnInit {
         ],
         "end2": [
           {
-            "type": "VGA (9 Pin)",
+            "type": "VGA-9-Pin",
             "male": false,
             "rightAngle": false,
             "powered": false,
@@ -324,7 +327,7 @@ export class CablePickerComponent implements OnInit {
         "location": "B-08",
         "end1": [
           {
-            "type": "Firewire 400",
+            "type": "Firewire-400",
             "male": true,
             "rightAngle": false,
             "powered": false,
@@ -335,7 +338,7 @@ export class CablePickerComponent implements OnInit {
         ],
         "end2": [
           {
-            "type": "Firewire (4 Pin)",
+            "type": "Firewire-4-Pin",
             "male": true,
             "rightAngle": false,
             "powered": false,
@@ -458,21 +461,95 @@ export class CablePickerComponent implements OnInit {
   }
 
   // Called when a cable is added from a cable-selection component
-  onAddCable1(cableAdded: IEnd): void {
-    console.log(cableAdded.type + " LEFT")
-    //place holder
-    this.end1.push({
-      "end": this.ends[1],
-      "quantity": 1
-    });
+  onAddCable1 (cableAdded: IBasicEnd): void {
+    this.newEnd = {
+      "type": cableAdded.type,
+      "male": cableAdded.male,
+      "rightAngle": false,
+      "powered": false,
+      "imageUrl": "",
+      "category": cableAdded.category,
+      "subCategory": cableAdded.subCategory
+    }
+    this.getEndImage (this.newEnd);
+
+    this.included = false;
+    this.scIndex = 0;
+    for (let end of this.end1) {
+      if (this.endCompareGender(end.end, this.newEnd)) {
+        this.included = true;
+        break;
+      }
+      this.scIndex++;
+    }
+
+    // If end already exists on end1 (index at scIndex)
+    if (this.included) {
+      this.end1[this.scIndex].quantity++;
+    }
+    // End not already on end1
+    else {
+      this.end1.push({
+        "end": this.newEnd,
+        "quantity": 1
+      });
+    }
   }
-  onAddCable2(cableAdded: IEnd): void {
-    console.log(cableAdded.type + " RIGHT")
-    //place holder
-    this.end2.push({
-      "end": this.ends[1],
-      "quantity": 1
-    });
+  onAddCable2 (cableAdded: IBasicEnd): void {
+    this.newEnd = {
+      "type": cableAdded.type,
+      "male": cableAdded.male,
+      "rightAngle": false,
+      "powered": false,
+      "imageUrl": "",
+      "category": cableAdded.category,
+      "subCategory": cableAdded.subCategory
+    }
+    this.getEndImage (this.newEnd);
+
+    this.included = false;
+    this.scIndex = 0;
+    for (let end of this.end2) {
+      if (this.endCompareGender(end.end, this.newEnd)) {
+        this.included = true;
+        break;
+      }
+      this.scIndex++;
+    }
+
+    // If end already exists on end1 (index at scIndex)
+    if (this.included) {
+      this.end2[this.scIndex].quantity++;
+    }
+    // End not already on end1
+    else {
+      this.end2.push({
+        "end": this.newEnd,
+        "quantity": 1
+      });
+    }
+  }
+
+  // Called when a cable is removed from cable viewer Component
+  onRemoveCable1 (indexRemoved: number ) {
+    // Only one of this end type
+    if (this.end1[indexRemoved].quantity == 1) {
+      this.end1.splice(indexRemoved, 1);
+    }
+    // multiple of this end type
+    else {
+      this.end1[indexRemoved].quantity--;
+    }
+  }
+  onRemoveCable2 (indexRemoved: number ) {
+    // Only one of this end type
+    if (this.end2[indexRemoved].quantity == 1) {
+      this.end2.splice(indexRemoved, 1);
+    }
+    // multiple of this end type
+    else {
+      this.end2[indexRemoved].quantity--;
+    }
   }
 
   // compare 2 end types to determine if they are equivalent
@@ -508,5 +585,18 @@ export class CablePickerComponent implements OnInit {
       index++;
     }
     return -1;
+  }
+
+  getEndImage (end: IEnd): void {
+    if (end.male) {
+      end.imageUrl = "../assets/images/cables/" + end.category.toLowerCase() +
+          "/" + end.subCategory.toLowerCase() + "/" +
+          end.type.toLowerCase() + "/male.png");
+    }
+    else {
+      end.imageUrl = "../assets/images/cables/" + end.category.toLowerCase() +
+          "/" + end.subCategory.toLowerCase() + "/" +
+          end.type.toLowerCase() + "/female.png");
+    }
   }
 }
