@@ -591,12 +591,12 @@ export class CablePickerComponent implements OnInit {
     if (end.male) {
       end.imageUrl = "../assets/images/cables/" + end.category.toLowerCase() +
           "/" + end.subCategory.toLowerCase() + "/" +
-          end.type.toLowerCase() + "/male.png");
+          end.type.toLowerCase() + "/male.png";
     }
     else {
       end.imageUrl = "../assets/images/cables/" + end.category.toLowerCase() +
           "/" + end.subCategory.toLowerCase() + "/" +
-          end.type.toLowerCase() + "/female.png");
+          end.type.toLowerCase() + "/female.png";
     }
   }
 }
