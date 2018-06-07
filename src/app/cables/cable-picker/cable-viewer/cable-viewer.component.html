@@ -2,18 +2,18 @@
   <div class="row">
     <h1 class="display-4" *ngIf="selectedEnds.length == 0">Add a Cable Type Below</h1>
     <div class="image-box" *ngFor="let selectedEnd of selectedEnds">
-      <img class="border border-danger" [src]="selectedEnd.end.imageUrl" [width]="imageSize"
+      <img class="border border-{{getColorString(selectedEnd)}}" [src]="selectedEnd.end.imageUrl" [width]="imageSize"
             [alt]="selectedEnd.end.type"/>
-      <div class="triangle-bottomright"></div>
-      <div class="bottom-right">
+      <div class="triangle-bottomright-{{getColorString(selectedEnd)}}" *ngIf="selectedEnd.quantity > 1"></div>
+      <div class="bottom-right" *ngIf="selectedEnd.quantity > 1">
         x{{ selectedEnd.quantity }}
       </div>
     </div>
   </div>
   <div class="row">
-    <button class="btn btn-outline-danger btn-sm"
-            *ngFor="let selectedEnd of selectedEnds; let i = index" (click)="removeEnd(i)">
-        {{ selectedEnd.end.type | endGender:selectedEnd.end }}
+    <button *ngFor="let selectedEnd of selectedEnds; let i = index" (click)="removeEnd(i)"
+    class="btn btn-outline-{{getColorString(selectedEnd)}} btn-sm">
+        {{ selectedEnd.end.type | endListDisplay:'-' | endGender:selectedEnd.end }}
         <i class ="fas fa-times-circle"></i>
     </button>
   </div>
