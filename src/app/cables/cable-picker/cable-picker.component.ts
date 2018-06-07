@@ -43,6 +43,7 @@ export class CablePickerComponent implements OnInit {
     this.getCategories(0);
     this.setTestEnds();
 
+/*
     for (let category of this.categories) {
       console.log(category.type);
       this.scIndex = 0;
@@ -54,6 +55,7 @@ export class CablePickerComponent implements OnInit {
         this.scIndex++;
       }
     }
+*/
 
     return;
   }
@@ -397,27 +399,24 @@ export class CablePickerComponent implements OnInit {
       // Category doesn't exist yet
       if (!this.included) {
         this.newCategory = {"type": end.category, "subCategories": [], "endTypes": []};
-        //this.newCategory.subCategories.push(end.subCategory);
         this.categories.push(this.newCategory);
       }
       // Category already exists
-      //else {
-        this.included = false;
-        cIndex = 0;
-        for (let subCategory of this.categories[this.getCategoryIndex(end.category, 0)].subCategories) {
-          if (end.subCategory.localeCompare(subCategory) == 0) {
-            this.included = true;
-            this.categories[this.getCategoryIndex(end.category, 0)].endTypes[cIndex].push(end);
-          }
-          cIndex++;
-        }
-        // SubCategory doesn't exist yet
-        if (!this.included) {
-          this.categories[this.getCategoryIndex(end.category, 0)].subCategories.push(end.subCategory);
-          this.categories[this.getCategoryIndex(end.category, 0)].endTypes[cIndex] = [];
+      this.included = false;
+      cIndex = 0;
+      for (let subCategory of this.categories[this.getCategoryIndex(end.category, 0)].subCategories) {
+        if (end.subCategory.localeCompare(subCategory) == 0) {
+          this.included = true;
           this.categories[this.getCategoryIndex(end.category, 0)].endTypes[cIndex].push(end);
         }
-    //  }
+        cIndex++;
+      }
+      // SubCategory doesn't exist yet
+      if (!this.included) {
+        this.categories[this.getCategoryIndex(end.category, 0)].subCategories.push(end.subCategory);
+        this.categories[this.getCategoryIndex(end.category, 0)].endTypes[cIndex] = [];
+        this.categories[this.getCategoryIndex(end.category, 0)].endTypes[cIndex].push(end);
+      }
     }
   }
 
