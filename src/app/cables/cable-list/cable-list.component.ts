@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ICable } from '../cable';
 import { IEnd } from '../end';
 
@@ -7,6 +7,12 @@ import { IEnd } from '../end';
   templateUrl: './cable-list.component.html',
   styleUrls: ['./cable-list.component.css']
 })
-export class CableListComponent {
+export class CableListComponent implements OnInit {
   @Input() cables: ICable[];
+  shownCables: ICable[] = [];
+
+  ngOnInit (): void {
+    //this.shownCables = Object.assign({}, this.cables);
+    console.log(this.shownCables.length);
+  }
 }
