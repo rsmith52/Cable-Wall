@@ -460,9 +460,19 @@ export class CablePickerComponent implements OnInit {
   // Called when a cable is added from a cable-selection component
   onAddCable1(cableAdded: IEnd): void {
     console.log(cableAdded.type + " LEFT")
+    //place holder
+    this.end1.push({
+      "end": this.ends[1],
+      "quantity": 1
+    });
   }
   onAddCable2(cableAdded: IEnd): void {
     console.log(cableAdded.type + " RIGHT")
+    //place holder
+    this.end2.push({
+      "end": this.ends[1],
+      "quantity": 1
+    });
   }
 
   // compare 2 end types to determine if they are equivalent
