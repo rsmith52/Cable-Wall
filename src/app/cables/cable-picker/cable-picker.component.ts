@@ -78,24 +78,30 @@ export class CablePickerComponent implements OnInit {
         "location": "A-01",
         "end1": [
           {
-            "type": "HDMI",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
-            "category": "Video",
-            "subCategory": "HDMI"
+            "end": {
+              "type": "HDMI",
+              "male": true,
+              "rightAngle": false,
+              "powered": false,
+              "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
+              "category": "Video",
+              "subCategory": "HDMI"
+            },
+            "quantity": 1
           }
         ],
         "end2": [
           {
-            "type": "HDMI",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
-            "category": "Video",
-            "subCategory": "HDMI"
+            "end": {
+              "type": "HDMI",
+              "male": true,
+              "rightAngle": false,
+              "powered": false,
+              "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
+              "category": "Video",
+              "subCategory": "HDMI"
+            },
+            "quantity": 1
           }
         ]
       },
@@ -111,24 +117,30 @@ export class CablePickerComponent implements OnInit {
         "location": "A-02",
         "end1": [
           {
-            "type": "HDMI",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
-            "category": "Video",
-            "subCategory": "HDMI"
+            "end": {
+              "type": "HDMI",
+              "male": true,
+              "rightAngle": false,
+              "powered": false,
+              "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
+              "category": "Video",
+              "subCategory": "HDMI"
+            },
+            "quantity": 1
           }
         ],
         "end2": [
           {
-            "type": "HDMI",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
-            "category": "Video",
-            "subCategory": "HDMI"
+            "end": {
+              "type": "HDMI",
+              "male": true,
+              "rightAngle": false,
+              "powered": false,
+              "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/male.png",
+              "category": "Video",
+              "subCategory": "HDMI"
+            },
+            "quantity": 1
           }
         ]
       },
@@ -144,207 +156,55 @@ export class CablePickerComponent implements OnInit {
         "location": "B-01",
         "end1": [
           {
-            "type": "USB-C",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/male.png",
-            "category": "Data",
-            "subCategory": "USB"
+            "end": {
+              "type": "USB-C",
+              "male": true,
+              "rightAngle": false,
+              "powered": false,
+              "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/male.png",
+              "category": "Data",
+              "subCategory": "USB"
+            },
+            "quantity": 1
           }
         ],
         "end2": [
           {
-            "type": "HDMI",
-            "male": false,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/female.png",
-            "category": "Video",
-            "subCategory": "HDMI"
+            "end": {
+              "type": "HDMI",
+              "male": false,
+              "rightAngle": false,
+              "powered": false,
+              "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/female.png",
+              "category": "Video",
+              "subCategory": "HDMI"
+            }
+            "quantity": 1
           },
           {
-            "type": "USB-A-3.0",
-            "male": false,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/data/usb/type-a/usb-a-3/female.png",
-            "category": "Data",
-            "subCategory": "USB"
+            "end": {
+              "type": "USB-A-3.0",
+              "male": false,
+              "rightAngle": false,
+              "powered": false,
+              "imageUrl": "../../assets/images/cables/data/usb/type-a/usb-a-3/female.png",
+              "category": "Data",
+              "subCategory": "USB"
+            },
+            "quantity": 1
+
           },
           {
-            "type": "USB-C",
-            "male": false,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/female.png",
-            "category": "Data",
-            "subCategory": "USB"
-          }
-        ]
-      },
-      {
-        "itemNumber": 3,
-        "UPC": 3,
-        "price": 9.95,
-        "quantity": 2,
-        "name": "Cable 3",
-        "brand": "Brand A",
-        "length": "3 ft",
-        "color": "white",
-        "location": "A-02",
-        "end1": [
-          {
-            "type": "Mini-Displayport",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/video/displayport/mini-displayport/male.png",
-            "category": "Video",
-            "subCategory": "Displayport"
-          }
-        ],
-        "end2": [
-          {
-            "type": "HDMI",
-            "male": false,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/female.png",
-            "category": "Video",
-            "subCategory": "HDMI"
-          }
-        ]
-      },
-      {
-        "itemNumber": 4,
-        "UPC": 4,
-        "price": 14.95,
-        "quantity": 24,
-        "name": "Cable 4",
-        "brand": "Brand D",
-        "length": "9 ft",
-        "color": "white",
-        "location": "A-03",
-        "end1": [
-          {
-            "type": "3.5-mm-Audio",
-            "male": true,
-            "rightAngle": true,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/audio/3-5-mm/3-5-mm-trs/male.png",
-            "category": "Audio",
-            "subCategory": "3.5mm"
-          }
-        ],
-        "end2": [
-          {
-            "type": "3.5-mm-Audio",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/audio/3-5-mm/3-5-mm-trs/male.png",
-            "category": "Audio",
-            "subCategory": "3.5mm"
-          }
-        ]
-      },
-      {
-        "itemNumber": 5,
-        "UPC": 5,
-        "price": 11.49,
-        "quantity": 32,
-        "name": "Cable 5",
-        "brand": "Brand D",
-        "length": "1 in",
-        "color": "white",
-        "location": "C-01",
-        "end1": [
-          {
-            "type": "Lightning",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/data/lightning/lightning/male.png",
-            "category": "Data",
-            "subCategory": "Lightning"
-          }
-        ],
-        "end2": [
-          {
-            "type": "3.5-mm-Audio",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/audio/3-5-mm/3-5-mm-trs/male.png",
-            "category": "Audio",
-            "subCategory": "3.5mm"
-          }
-        ]
-      },
-      {
-        "itemNumber": 6,
-        "UPC": 6,
-        "price": 19.95,
-        "quantity": 24,
-        "name": "Cable 6",
-        "brand": "Brand A",
-        "length": "6 in",
-        "color": "silver",
-        "location": "B-04",
-        "end1": [
-          {
-            "type": "USB-C",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/male.png",
-            "category": "Data",
-            "subCategory": "USB"
-          }
-        ],
-        "end2": [
-          {
-            "type": "VGA-9-Pin",
-            "male": false,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/video/vga/vga-9pin/female.png",
-            "category": "Video",
-            "subCategory": "VGA"
-          }
-        ]
-      },
-      {
-        "itemNumber": 7,
-        "UPC": 7,
-        "price": 4.99,
-        "quantity": 4,
-        "name": "Cable 7",
-        "brand": "Brand B",
-        "length": "6 in",
-        "color": "black",
-        "location": "B-08",
-        "end1": [
-          {
-            "type": "Firewire-400",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/data/firewire/400/male.png",
-            "category": "Data",
-            "subCategory": "Firewire"
-          }
-        ],
-        "end2": [
-          {
-            "type": "Firewire-4-Pin",
-            "male": true,
-            "rightAngle": false,
-            "powered": false,
-            "imageUrl": "../../assets/images/cables/data/firewire/4pin/male.png",
-            "category": "Data",
-            "subCategory": "Firewire"
+            "end": {
+              "type": "USB-C",
+              "male": false,
+              "rightAngle": false,
+              "powered": false,
+              "imageUrl": "../../assets/images/cables/data/usb/type-c/usb-c/female.png",
+              "category": "Data",
+              "subCategory": "USB"
+            },
+            "quantity": 1
           }
         ]
       }
@@ -384,36 +244,36 @@ export class CablePickerComponent implements OnInit {
         this.included = false;
         this.includedSimple = false;
         for (let end2 of this.ends) {
-          if (this.endCompareGender(end1, end2)) {
+          if (this.endCompareGender(end1.end, end2)) {
             this.included = true;
           }
-          if (this.endCompareSimple(end1, end2)) {
+          if (this.endCompareSimple(end1.end, end2)) {
             this.includedSimple = true;
           }
         }
         if (!this.included) {
-          this.ends.push(end1);
+          this.ends.push(end1.end);
         }
         if (!this.includedSimple) {
-          this.endsSimple.push(end1);
+          this.endsSimple.push(end1.end);
         }
       }
       for (let end1 of cable.end2) {
         this.included = false;
         this.includedSimple = false;
         for (let end2 of this.ends) {
-          if (this.endCompareGender(end1, end2)) {
+          if (this.endCompareGender(end1.end, end2)) {
             this.included = true;
           }
-          if (this.endCompareSimple(end1, end2)) {
+          if (this.endCompareSimple(end1.end, end2)) {
             this.includedSimple = true;
           }
         }
         if (!this.included) {
-          this.ends.push(end1);
+          this.ends.push(end1.end);
         }
         if (!this.includedSimple) {
-          this.endsSimple.push(end1);
+          this.endsSimple.push(end1.end);
         }
       }
     }

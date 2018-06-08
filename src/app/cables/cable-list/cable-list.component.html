@@ -1,5 +1,6 @@
 <div class="cable-list shadow p-3 mb-5 bg-white rounded">
   <div class="table-responsive">
+    <h1 class="display-4" *ngIf="shownCables.length == 0">No Matching Cables</h1>
     <table class="table" *ngIf="shownCables && shownCables.length">
       <thead>
         <tr>
@@ -18,13 +19,13 @@
           <td>{{ cable.itemNumber }}</td>
           <td><a [routerLink]="['/cables', cable.itemNumber]">{{ cable.name }}</a></td>
           <td>
-            <p *ngFor="let end of cable.end1">
-              {{ end.type | endGender:end }}
+            <p *ngFor="let endSelection of cable.end1">
+              {{ endSelection.end.type | endGender:endSelection.end }}
             </p>
           </td>
           <td>
-            <p *ngFor="let end of cable.end2">
-              {{ end.type | endGender:end }}
+            <p *ngFor="let endSelection of cable.end2">
+              {{ endSelection.end.type | endGender:endSelection.end }}
             </p>
           </td>
           <td>{{ cable.length }}</td>

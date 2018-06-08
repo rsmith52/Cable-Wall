@@ -1,4 +1,4 @@
-import { IEnd } from './end'
+import { IEndSelection } from './end-selection'
 
 export interface ICable {
   itemNumber: number;
@@ -12,7 +12,7 @@ export interface ICable {
   color: string;
 
   location: string;
-  end1: IEnd[];
-  end2: IEnd[];
+  end1: IEndSelection[];
+  end2: IEndSelection[];
 
 }
