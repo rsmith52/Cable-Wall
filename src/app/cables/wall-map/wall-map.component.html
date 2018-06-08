@@ -1,0 +1,11 @@
+<div class="wall-map">
+  <div class="wall-map-section shadow p-3 mb-5 bg-white rounded">
+    <ul class="nav nav-tabs nav-fill">
+      <li class="nav-item" *ngFor="let section of sections; let i = index">
+        <a class="nav-link" [class.active]="currentSection==i" (click)="clickedTab(i)">
+          {{sections[i] | endListDisplay:'_' }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

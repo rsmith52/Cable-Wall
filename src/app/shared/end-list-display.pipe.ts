@@ -7,6 +7,9 @@ import { IEnd } from '../cables/end';
 
 export class EndListDisplayPipe implements PipeTransform {
   transform(value: string, character: string): string {
-    return value.replace(character, ' ');
+    while (value.indexOf(character) != -1) {
+      value = value.replace(character, ' ');
+    }
+    return value;
   }
 }

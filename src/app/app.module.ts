@@ -9,6 +9,9 @@ import { CableListComponent } from './cables/cable-list/cable-list.component';
 import { CableViewerComponent} from './cables/cable-picker/cable-viewer/cable-viewer.component';
 import { CableSelectionComponent } from './cables/cable-picker/cable-selection/cable-selection.component';
 import { CableDetailComponent } from './cables/cable-detail/cable-detail.component';
+
+import { WallMapComponent } from './cables/wall-map/wall-map.component';
+
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './404/page-not-found.component';
 
@@ -26,6 +29,7 @@ import { CableGuardService } from './cables/cable-guard.service';
     CableViewerComponent,
     CableSelectionComponent,
     CableDetailComponent,
+    WallMapComponent,
     HomeComponent,
     PageNotFoundComponent,
     EndGenderPipe,
@@ -39,6 +43,8 @@ import { CableGuardService } from './cables/cable-guard.service';
       { path: 'home', component: HomeComponent },
       { path: 'cables', component: CablePickerComponent },
       { path: 'cables/:itemNumber', canActivate: [CableGuardService], component: CableDetailComponent },
+      { path: 'cablewall', component: WallMapComponent },
+      { path: 'cablewall/:location', component: WallMapComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: '**', component: PageNotFoundComponent }
     ])

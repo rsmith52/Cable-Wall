@@ -34,7 +34,7 @@ export class CablePickerComponent implements OnInit {
   // used when adding new end
   newEnd: IEnd;
 
-  // temp test variable to print categories/ends
+  // loop index variable to print categories/ends
   scIndex: number;
 
   // Methods //
@@ -46,20 +46,6 @@ export class CablePickerComponent implements OnInit {
     this.getEnds();
     this.getCategories(0);
     //this.setTestEnds();
-
-/*
-    for (let category of this.categories) {
-      console.log(category.type);
-      this.scIndex = 0;
-      for (let subCategory of category.subCategories) {
-        console.log("___" + subCategory);
-        for (let endType of category.endTypes[this.scIndex]) {
-          console.log("______" + endType.type);
-        }
-        this.scIndex++;
-      }
-    }
-*/
 
     return;
   }
@@ -75,7 +61,7 @@ export class CablePickerComponent implements OnInit {
         "brand": "Brand A",
         "length": "6 ft",
         "color": "black",
-        "location": "A-01",
+        "location": "Cable_Wall: A-01",
         "end1": [
           {
             "end": {
@@ -114,7 +100,7 @@ export class CablePickerComponent implements OnInit {
         "brand": "Brand A",
         "length": "3 ft",
         "color": "black",
-        "location": "A-02",
+        "location": "Cable_Wall: A-02",
         "end1": [
           {
             "end": {
@@ -153,7 +139,7 @@ export class CablePickerComponent implements OnInit {
         "brand": "Brand B",
         "length": "0 in",
         "color": "white",
-        "location": "B-01",
+        "location": "USB_C_Section: 01",
         "end1": [
           {
             "end": {
@@ -178,7 +164,7 @@ export class CablePickerComponent implements OnInit {
               "imageUrl": "../../assets/images/cables/video/hdmi/hdmi/female.png",
               "category": "Video",
               "subCategory": "HDMI"
-            }
+            },
             "quantity": 1
           },
           {
@@ -217,7 +203,7 @@ export class CablePickerComponent implements OnInit {
         "brand": "Brand C",
         "length": "3 in",
         "color": "silver",
-        "location": "C-01",
+        "location": "USB_C_Section: 02",
         "end1": [
           {
             "end": {

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IEndSelection } from '../cables/end';
+import { IEndSelection } from '../cables/end-selection';
 
 @Pipe ({
   name: "endQuantity"

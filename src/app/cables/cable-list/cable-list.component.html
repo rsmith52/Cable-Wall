@@ -33,7 +33,7 @@
             {{ cable.price | currency:"USD":symbol:"1.2-2" }}
           </td>
           <td>{{ cable.quantity }}</td>
-          <td>{{ cable.location }}</td>
+          <td>{{ cable.location | endListDisplay:'_' | endListDisplay:'-' }}</td>
         </tr>
       </tbody>
     </table>
