@@ -19,6 +19,7 @@ export class WallMapComponent implements OnInit, OnDestroy {
   selectedLocation: string;
   // sections (cable wall, separate shelf, ecm cables, etc)
   sections: string[];
+  sectionData: ICable[][][] = [];
   currentSection: number = 0;
   included: boolean;
 
@@ -32,6 +33,31 @@ export class WallMapComponent implements OnInit, OnDestroy {
     this.setTestCables();
     this.getSections();
 
+    this.sectionData = [
+      // Section 1
+      [
+        // Rows of Cables
+        [
+          this.cables[0], this.cables[1]
+        ],
+        [
+          this.cables[2]
+        ],
+        [
+          this.cables[3]
+        ]
+      ],
+      // Section 2
+      [
+        // Rows of Cables
+        [
+          this.cables[3], this.cables[2]
+        ],
+        [
+          this.cables[1], this.cables[0]
+        ]
+      ]
+    ]
   }
 
   ngOnDestroy() {

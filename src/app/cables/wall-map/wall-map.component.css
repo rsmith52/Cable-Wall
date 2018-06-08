@@ -2,3 +2,13 @@
   background-color: #DFDFDF;
   padding: 15px;
 }
+.wall-map-map {
+  padding: 15px;
+}
+.cable-box {
+  background-color: #DFDFDF;
+  color: white;
+  margin-bottom: 15px;
+  width: 100px;
+  height: 100px;
+}
