@@ -207,6 +207,45 @@ export class CablePickerComponent implements OnInit {
             "quantity": 1
           }
         ]
+      },
+      {
+        "itemNumber": 3,
+        "UPC": 3,
+        "price": 19.99,
+        "quantity": 8,
+        "name": "Cable 4",
+        "brand": "Brand C",
+        "length": "3 in",
+        "color": "silver",
+        "location": "C-01",
+        "end1": [
+          {
+            "end": {
+              "type": "USB-C",
+              "male": true,
+              "rightAngle": false,
+              "powered": false,
+              "imageUrl": "",
+              "category": "Data",
+              "subCategory": "USB"
+            },
+            "quantity": 1
+          }
+        ],
+        "end2": [
+          {
+            "end": {
+              "type": "USB-A-3.0",
+              "male": false,
+              "rightAngle": false,
+              "powered": false,
+              "imageUrl": "",
+              "category": "Data",
+              "subCategory": "USB"
+            },
+            "quantity": 3
+          }
+        ]
       }
     ];
   }

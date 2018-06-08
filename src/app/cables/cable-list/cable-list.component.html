@@ -20,12 +20,12 @@
           <td><a [routerLink]="['/cables', cable.itemNumber]">{{ cable.name }}</a></td>
           <td>
             <p *ngFor="let endSelection of cable.end1">
-              {{ endSelection.end.type | endGender:endSelection.end }}
+              {{ endSelection.end.type | endGender:endSelection.end | endQuantity:endSelection }}
             </p>
           </td>
           <td>
             <p *ngFor="let endSelection of cable.end2">
-              {{ endSelection.end.type | endGender:endSelection.end }}
+              {{ endSelection.end.type | endGender:endSelection.end | endQuantity:endSelection }}
             </p>
           </td>
           <td>{{ cable.length }}</td>
