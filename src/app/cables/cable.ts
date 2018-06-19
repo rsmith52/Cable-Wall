@@ -11,7 +11,7 @@ export interface ICable {
   length: string;
   color: string;
 
-  location: string;
+  location: string[];
   end1: IEndSelection[];
   end2: IEndSelection[];
 

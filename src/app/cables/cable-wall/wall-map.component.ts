@@ -75,7 +75,7 @@ export class WallMapComponent implements OnInit, OnDestroy {
         "brand": "Brand A",
         "length": "6 ft",
         "color": "black",
-        "location": "Cable_Wall: A-01",
+        "location": ["Cable_Wall: A-01"],
         "end1": [
           {
             "end": {
@@ -114,7 +114,7 @@ export class WallMapComponent implements OnInit, OnDestroy {
         "brand": "Brand A",
         "length": "3 ft",
         "color": "black",
-        "location": "Cable_Wall: A-02",
+        "location": ["Cable_Wall: A-02"],
         "end1": [
           {
             "end": {
@@ -153,7 +153,7 @@ export class WallMapComponent implements OnInit, OnDestroy {
         "brand": "Brand B",
         "length": "0 in",
         "color": "white",
-        "location": "USB_C_Section: 01",
+        "location": ["USB_C_Section: 01"],
         "end1": [
           {
             "end": {
@@ -217,7 +217,7 @@ export class WallMapComponent implements OnInit, OnDestroy {
         "brand": "Brand C",
         "length": "3 in",
         "color": "silver",
-        "location": "USB_C_Section: 02",
+        "location": ["USB_C_Section: 02"],
         "end1": [
           {
             "end": {
@@ -258,13 +258,13 @@ export class WallMapComponent implements OnInit, OnDestroy {
       this.included = false;
       // Check if each cable's section exists yet
       for (let section of this.sections) {
-        if (section.localeCompare(this.getSectionName(cable.location)) == 0) {
+        if (section.localeCompare(this.getSectionName(cable.location[0])) == 0) {
           this.included = true;
         }
       }
       // Section doesn't exist yet
       if (!this.included) {
-        this.sections.push(this.getSectionName(cable.location));
+        this.sections.push(this.getSectionName(cable.location[0]));
       }
     }
   }

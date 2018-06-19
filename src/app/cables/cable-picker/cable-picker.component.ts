@@ -61,7 +61,7 @@ export class CablePickerComponent implements OnInit {
         "brand": "Brand A",
         "length": "6 ft",
         "color": "black",
-        "location": "Cable_Wall: A-01",
+        "location": ["Cable_Wall: A-01"],
         "end1": [
           {
             "end": {
@@ -100,7 +100,7 @@ export class CablePickerComponent implements OnInit {
         "brand": "Brand A",
         "length": "3 ft",
         "color": "black",
-        "location": "Cable_Wall: A-02",
+        "location": ["Cable_Wall: A-02"],
         "end1": [
           {
             "end": {
@@ -139,7 +139,7 @@ export class CablePickerComponent implements OnInit {
         "brand": "Brand B",
         "length": "0 in",
         "color": "white",
-        "location": "USB_C_Section: 01",
+        "location": ["USB_C_Section: 01"],
         "end1": [
           {
             "end": {
@@ -203,7 +203,7 @@ export class CablePickerComponent implements OnInit {
         "brand": "Brand C",
         "length": "3 in",
         "color": "silver",
-        "location": "USB_C_Section: 02",
+        "location": ["USB_C_Section: 02"],
         "end1": [
           {
             "end": {
