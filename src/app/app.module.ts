@@ -10,7 +10,7 @@ import { CableViewerComponent} from './cables/cable-picker/cable-viewer/cable-vi
 import { CableSelectionComponent } from './cables/cable-picker/cable-selection/cable-selection.component';
 import { CableDetailComponent } from './cables/cable-detail/cable-detail.component';
 
-import { WallMapComponent } from './cables/wall-map/wall-map.component';
+import { WallMapComponent } from './cables/cable-wall/wall-map.component';
 
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './404/page-not-found.component';
